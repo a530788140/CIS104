@@ -15,7 +15,7 @@ Reading file to execute loop detection
 """
 
 def fileParse():
-	"Here's some cmd from file"
+	"some cmd from setup.txt"
 	with open('setup.txt', 'r') as f:
 		lines = f.readlines()
 		cmd = [n.strip('\n').split() for n in lines]
