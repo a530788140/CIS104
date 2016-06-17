@@ -93,30 +93,31 @@ class ovsState():
 		self.brName = [self.ip + '-' + n for n in self.brdict.keys()]
 
 	def pair(self):
-		brPort = []
+		self.brPort = []
 		patchPort = []
 		for name, value in self.brdict.items():
 			for port in value:
 				#Got bridge-Port edge, and specify host name
 				n = self.ip + '-' + name
-				brPort.append((n, port[0]))
+				self.brPort.append((n, port[0]))
 				if len(port[1][1]) != 0:
 					#If port has options
 					for n in port[1][1]:
 						#Got patch port edge 
 						#notice: here has some redudant pair:(a,b)=(b,a)
-						brPort.append((port[0], n[1]))
-		return brPort
-
+						self.brPort.append((port[0], n[1]))
+		#return brPort
+	def read(self):
+		self.dbConnect()
+		self.interfaceState()
+		self.portState()
+		self.bridgeState()
+		self.pair()
 
 if __name__ == '__main__':
 	
 	ovs1 = ovsState('140.116.163.140', 5000, "hsnet", ['eth0', 'lo', 'virbr0'])
-	ovs1.dbConnect()
-	ovs1.interfaceState()
-	ovs1.portState()
-	ovs1.bridgeState()
-	print "PNIC: ",ovs1.pnic
-	p = ovs1.pair()
-	for n in p:
+	ovs1.read()
+	print ovs1.brName
+	for n in ovs1.brPort:
 		print n

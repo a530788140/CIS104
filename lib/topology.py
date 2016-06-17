@@ -27,18 +27,15 @@ class TPG():
 		else:
 			plt.title('Network Topology\n' + 'No cycle')
 		plt.axis('off')
+		#save figure to path
 		plt.savefig('/home/hsnet/Desktop/foo.png')
 		plt.show()
 
 
 if __name__ == '__main__':
 	ovs1 = read_db.ovsState('140.116.163.140', 5000, 'h', ['eth0', 'lo', 'virbr0', 'br1'])
-	ovs1.dbConnect()
-	ovs1.interfaceState()
-	ovs1.portState()
-	ovs1.bridgeState()
-	br2port = ovs1.pair()
+	ovs1.read()
 	host1 = TPG()
 	host1.addNodes(ovs1.brName, ovs1.portName)
-	host1.generator(br2port)
+	host1.generator(ovs1.brPort)
 	host1.show('PATH')

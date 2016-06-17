@@ -31,14 +31,10 @@ def main(cmd):
 	for n in cmd:
 		if n[0] == '-a':
 			ovs = read_db.ovsState(n[1], int(n[2]))
-			ovs.dbConnect()
-			ovs.interfaceState()
-			ovs.portState()
-			ovs.bridgeState()
-			p = ovs.pair()
+			ovs.read()
 			br.extend(ovs.brName)
 			port.extend(ovs.portName)
-			pairList.append(p)
+			pairList.append(ovs.brPort)
 		if n[0] == '-s':
 			pairList.append([(n[1], n[3])])
 
