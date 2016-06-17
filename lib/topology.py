@@ -15,18 +15,12 @@ class TPG():
 		#self.pnic = [n for n in pnic if n in self.br]
 
 	def generator(self, pair):
-		#plt.switch_backend('agg')
 		self.G.add_edges_from(pair)
-		"""
-	def drawPath(self, edge):
-		pos = nx.spring_layout(self.G)
-		nx.draw_networkx_edges(self.G, pos, edgelist=edge, color=)"""
 
 	def show(self, cycle=None):
 		pos = nx.spring_layout(self.G)
 		nx.draw_networkx(self.G,pos,with_labels=True)
 		nx.draw_networkx_nodes(self.G, pos, nodelist=self.br, node_color='dodgerblue')
-		#nx.draw_networkx_nodes(self.G, pos, nodelist=self.pnic, node_color='b')
 		nx.draw_networkx_nodes(self.G, pos, nodelist=self.port, node_color='lawngreen')
 		if cycle:
 			plt.title('Network Topology\n' + 'Cycle found: ' + cycle)

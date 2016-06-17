@@ -41,7 +41,7 @@ def main(cmd):
 			pairList.append(p)
 		if n[0] == '-s':
 			pairList.append([(n[1], n[3])])
-
+	print pairList
 	nt.addNodes(br, port, pnic)
 	[nt.generator(n) for n in pairList]
 	c = nx.find_cycle(nt.G)

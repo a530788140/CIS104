@@ -3,7 +3,7 @@ import Queue
 import socket
 import json
 from select import select
-
+#default setting
 OVSDB_IP = '127.0.0.1'
 OVSDB_PORT = 5000
 DEFAULT_DB = 'Open_vSwitch'
