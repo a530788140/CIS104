@@ -28,7 +28,7 @@ class TPG():
 			plt.title('Network Topology\n' + 'No cycle')
 		plt.axis('off')
 		#save figure to path
-		plt.savefig('/home/hsnet/Desktop/foo.png')
+		#plt.savefig('/home/hsnet/Desktop/foo.png')
 		plt.show()
 
 

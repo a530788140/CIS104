@@ -7,7 +7,7 @@ import re
 
 import lib.topology as topo
 import lib.read_db as read_db
-import lib.read_net as read_net
+
 
 
 """
