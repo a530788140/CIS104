@@ -1,6 +1,6 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
-#matplotlib.use('Agg')
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import networkx as nx
 import argparse

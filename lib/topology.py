@@ -23,12 +23,13 @@ class TPG():
 		nx.draw_networkx_nodes(self.G, pos, nodelist=self.br, node_color='dodgerblue')
 		nx.draw_networkx_nodes(self.G, pos, nodelist=self.port, node_color='lawngreen')
 		if cycle:
-			plt.title('Network Topology\n' + 'Cycle found: ' + cycle)
+			cycle = cycle.replace('],','],\n')
+			plt.title('Network Topology - ' + 'Cycle found:\n ' + cycle, fontsize=11)
 		else:
-			plt.title('Network Topology\n' + 'No cycle')
+			plt.title('Network Topology - ' + 'No cycle')
 		plt.axis('off')
 		#save figure to path
-		#plt.savefig('/home/hsnet/Desktop/foo.png')
+		plt.savefig('/home/hsnet/Desktop/foo.png')
 		plt.show()
 
 

@@ -1,13 +1,13 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
-#matplotlib.use('Agg')
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import networkx as nx
 import re
 
 import lib.topology as topo
 import lib.read_db as read_db
-
+import lib.read_net as read_net
 
 
 """
@@ -27,7 +27,6 @@ def main(cmd):
  	port = []
  	pnic = []
 	nt = topo.TPG()
-
 	for n in cmd:
 		if n[0] == '-a':
 			ovs = read_db.ovsState(n[1], int(n[2]))
@@ -40,8 +39,8 @@ def main(cmd):
 
 	nt.addNodes(br, port, pnic)
 	[nt.generator(n) for n in pairList]
-	c = nx.find_cycle(nt.G)
-	nt.show(str(c).strip('[]'))
+	c = nx.cycle_basis(nt.G)
+	nt.show(str(c))
 
 
 if __name__ == '__main__':
